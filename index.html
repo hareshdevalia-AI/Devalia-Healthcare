@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devalia Healthcare</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f4ee;
+      color: #1d2833;
+    }
+
+    .topbar {
+      background: #ffffff;
+      padding: 24px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e5dfd3;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 34px;
+      letter-spacing: 5px;
+      color: #3f3524;
+    }
+
+    .brand span {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      letter-spacing: 7px;
+      color: #a58645;
+      margin-top: 4px;
+    }
+
+    .values {
+      font-size: 11px;
+      letter-spacing: 4px;
+      line-height: 1.7;
+      color: #6e685e;
+      text-align: right;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 65px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(238,231,217,0.95),
+          rgba(255,255,255,0.88),
+          rgba(228,235,236,0.92)
+        );
+      border-bottom: 1px solid #e2d8c6;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+      font-size: clamp(42px, 6vw, 78px);
+      letter-spacing: 3px;
+      color: #332d24;
+    }
+
+    .hero .location {
+      margin-top: 16px;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #28333c;
+    }
+
+    .gold-line {
+      width: 130px;
+      height: 2px;
+      background: #a98947;
+      margin: 28px auto;
+    }
+
+    .hero .tagline {
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: clamp(21px, 3vw, 31px);
+      color: #273544;
+    }
+
+    .specialists {
+      width: min(1450px, 94%);
+      margin: 0 auto;
+      padding: 40px 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .doctor-card {
+      background: #ffffff;
+      display: grid;
+      grid-template-columns: 46% 54%;
+      min-height: 445px;
+      border: 1px solid #ece5d9;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      overflow: hidden;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+    }
+
+    .doctor-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 445px;
+      object-fit: cover;
+      background: #ebe8e2;
+    }
+
+    .doctor-info {
+      padding: 50px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .small-line {
+      width: 42px;
+      height: 2px;
+      background: #ad8b46;
+      margin-bottom: 25px;
+    }
+
+    .doctor-info h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+      font-size: 34px;
+      margin: 0 0 15px;
+      color: #182534;
+    }
+
+    .title {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 26px;
+    }
+
+    .description {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.45;
+      margin-bottom: 30px;
+      color: #30363a;
+    }
+
+    .button {
+      display: inline-block;
+      background: #a8894c;
+      color: #ffffff;
+      padding: 18px 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .benefits {
+      width: min(1450px, 94%);
+      margin: 0 auto 35px;
+      border-top: 1px solid #d8c9aa;
+      border-bottom: 1px solid #d8c9aa;
+      padding: 28px 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .benefit {
+      text-align: center;
+      padding: 8px 18px;
+      border-right: 1px solid #ddd4c4;
+    }
+
+    .benefit:last-child {
+      border-right: none;
+    }
+
+    .benefit strong {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .benefit span {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #777169;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 15px 40px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 11px;
+      color: #7c766c;
+    }
+
+    @media (max-width: 950px) {
+      .specialists {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .benefit {
+        border-right: none;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .topbar {
+        display: block;
+        text-align: center;
+      }
+
+      .values {
+        text-align: center;
+        margin-top: 16px;
+      }
+
+      .doctor-card {
+        grid-template-columns: 1fr;
+      }
+
+      .doctor-photo {
+        height: 400px;
+        min-height: 0;
+      }
+
+      .doctor-info {
+        padding: 35px 25px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .hero .location {
+        letter-spacing: 3px;
+        line-height: 1.7;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      DEVALIA
+      <span>HEALTHCARE</span>
+    </div>
+
+    <div class="values">
+      EXCELLENCE<br>
+      COMPASSION<br>
+      TRUST
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>DEVALIA HEALTHCARE</h1>
+
+    <div class="location">
+      Specialist Surgical Care in London &amp; South East Kent
+    </div>
+
+    <div class="gold-line"></div>
+
+    <div class="tagline">
+      Expertise. Personalised Care. A Healthier Tomorrow.
+    </div>
+  </section>
+
+  <main class="specialists">
+
+    <a class="doctor-card"
+       href="https://www.breastclinic.com/"
+       target="_blank">
+
+      <img
+        class="doctor-photo"
+        src="haresh.jpg"
+        alt="Mr Haresh Devalia">
+
+      <div class="doctor-info">
+        <div class="small-line"></div>
+
+        <h2>Mr Haresh Devalia</h2>
+
+        <div class="title">
+          Consultant Oncoplastic,<br>
+          Reconstructive &amp; Cosmetic<br>
+          Breast Surgeon
+        </div>
+
+        <div class="description">
+          Specialist expertise in breast health, breast cancer surgery,
+          breast reconstruction and cosmetic breast surgery.
+        </div>
+
+        <div class="button">
+          Visit BreastClinic.com &nbsp; →
+        </div>
+      </div>
+    </a>
+
+
+    <a class="doctor-card"
+       href="https://clevelandcliniclondon.uk/doctors/5207141-mrs-kalpana-devalia"
+       target="_blank">
+
+      <img
+        class="doctor-photo"
+        src="kalpana.jpg"
+        alt="Mrs Kalpana Devalia">
+
+      <div class="doctor-info">
+        <div class="small-line"></div>
+
+        <h2>Mrs Kalpana Devalia</h2>
+
+        <div class="title">
+          Consultant Bariatric &amp;<br>
+          Upper GI Surgeon
+        </div>
+
+        <div class="description">
+          Specialist expertise in obesity and bariatric surgical care.
+        </div>
+
+        <div class="button">
+          View Cleveland Clinic London Profile &nbsp; →
+        </div>
+      </div>
+    </a>
+
+  </main>
+
+  <section class="benefits">
+
+    <div class="benefit">
+      <strong>Specialist Care</strong>
+      <span>Evidence-based, patient-focused</span>
+    </div>
+
+    <div class="benefit">
+      <strong>Personalised Approach</strong>
+      <span>Tailored to individual needs</span>
+    </div>
+
+    <div class="benefit">
+      <strong>Convenient Locations</strong>
+      <span>London &amp; South East Kent</span>
+    </div>
+
+    <div class="benefit">
+      <strong>Trusted Expertise</strong>
+      <span>Delivering better outcomes</span>
+    </div>
+
+  </section>
+
+  <footer>
+    Surgical Excellence &nbsp; | &nbsp;
+    Compassionate Care &nbsp; | &nbsp;
+    Healthier Lives
+  </footer>
+
+</body>
+</html>
